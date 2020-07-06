@@ -28,6 +28,8 @@ import { DictCommandService } from "../../viewmodels/services/dict.command.servi
 import { RootStateMachine } from "../../viewmodels/statemachine/root.statemachine";
 import { StateMachineService } from "@farris/command-services";
 import { BehaviorSubject } from "rxjs";
+
+import { DictMockDataService } from "../../models/services/dict-mock.data.service";
 @Component({
   selector: "app-root",
   templateUrl: "./root.component.html",
@@ -50,6 +52,8 @@ import { BehaviorSubject } from "rxjs";
 
     StateMachineService,
     { provide: StateMachine, useClass: RootStateMachine },
+
+    DictMockDataService,
   ],
 })
 export class RootComponent extends FrameComponent implements OnInit {
