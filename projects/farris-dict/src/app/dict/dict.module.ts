@@ -26,6 +26,6 @@ import { FARRIS_DEVKIT_APP_PROVIDERS } from "@farris/devkit";
     FarrisSectionModule,
     DatagridModule,
   ],
-  providers: [FARRIS_DEVKIT_APP_PROVIDERS],
+  providers: [FARRIS_DEVKIT_APP_PROVIDERS]
 })
 export class DictModule {}

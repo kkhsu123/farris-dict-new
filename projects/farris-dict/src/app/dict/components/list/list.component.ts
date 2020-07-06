@@ -23,6 +23,7 @@ import { ListBindingData } from "../../viewmodels/bindingdata/list.bindingdata";
   ],
 })
 export class ListComponent extends FrameComponent implements OnInit {
+  viewModel: ListViewModel;
   @HostBinding("class.f-struct-wrapper")
   @HostBinding("class.f-utils-fill-flex-column")
   cls = true;

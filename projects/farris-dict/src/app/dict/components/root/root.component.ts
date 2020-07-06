@@ -9,6 +9,7 @@ import {
   ViewModel,
   BindingData,
   COMMAND_HANDLERS_TOKEN,
+  StateMachine,
 } from "@farris/devkit";
 
 import { DictRepository } from "../../models/dict.repository";
@@ -23,6 +24,10 @@ import { CancelHandler } from "../../viewmodels/handlers/cancel.handler";
 import { RemoveHandler } from "../../viewmodels/handlers/remove.handler";
 import { CloseHandler } from "../../viewmodels/handlers/close.handler";
 import { DictCommandService } from "../../viewmodels/services/dict.command.service";
+
+import { RootStateMachine } from "../../viewmodels/statemachine/root.statemachine";
+import { StateMachineService } from "@farris/command-services";
+import { BehaviorSubject } from "rxjs";
 @Component({
   selector: "app-root",
   templateUrl: "./root.component.html",
@@ -42,6 +47,9 @@ import { DictCommandService } from "../../viewmodels/services/dict.command.servi
     { provide: COMMAND_HANDLERS_TOKEN, useClass: RemoveHandler, multi: true },
     { provide: COMMAND_HANDLERS_TOKEN, useClass: CloseHandler, multi: true },
     DictCommandService,
+
+    StateMachineService,
+    { provide: StateMachine, useClass: RootStateMachine },
   ],
 })
 export class RootComponent extends FrameComponent implements OnInit {
@@ -64,6 +72,11 @@ export class RootComponent extends FrameComponent implements OnInit {
       disabled: false,
     },
     {
+      id: "toolbar-cancel",
+      text: "取消",
+      disabled: false,
+    },
+    {
       id: "toolbar-delete",
       text: "删除",
       disabled: false,
@@ -74,11 +87,28 @@ export class RootComponent extends FrameComponent implements OnInit {
       disabled: false,
     },
   ];
+  /**
+   * 作为`<f-response-toolbar>`的`btnState`输入属性
+   */
+  toolbarDisableStates = new BehaviorSubject({});
+
   constructor(injector: Injector) {
     super(injector);
   }
   ngOnInit() {
     this.viewModel.load();
+    // 监听状态机的状态迁移事件`stateChange`
+    this.viewModel.stateMachine.stateChange.subscribe(() => {
+      // 向`<f-response-toolbar>`广播最新的按钮禁用状态配置
+      this.toolbarDisableStates.next({
+        "toolbar-add": !this.viewModel.stateMachine["canAdd"],
+        "toolbar-edit": !this.viewModel.stateMachine["canEdit"],
+        "toolbar-save": !this.viewModel.stateMachine["canSave"],
+        "toolbar-cancel": !this.viewModel.stateMachine["canCancel"],
+        "toolbar-delete": !this.viewModel.stateMachine["canRemove"],
+        "toolbar-close": false,
+      });
+    });
   }
   toolbarClickHandler(event: ResponseToolbarClickEvent) {
     switch (event.id) {

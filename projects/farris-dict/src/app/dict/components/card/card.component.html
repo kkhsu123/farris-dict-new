@@ -19,6 +19,7 @@
                   class="form-control"
                   name="ID"
                   [(ngModel)]="data.id"
+                  [readonly]="true"
                 />
                 <div class="farris-feedback valid-feedback"></div>
               </div>
@@ -37,6 +38,7 @@
                   class="form-control"
                   name="Code"
                   [(ngModel)]="data.code"
+                  [readonly]="!viewModel.stateMachine['editable']"
                 />
                 <div class="farris-feedback valid-feedback"></div>
               </div>
@@ -55,6 +57,7 @@
                   class="form-control"
                   name="Name"
                   [(ngModel)]="data.name"
+                  [readonly]="!viewModel.stateMachine['editable']"
                 />
                 <div class="farris-feedback valid-feedback"></div>
               </div>

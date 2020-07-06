@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { NgCommandHandler, CommandHandler, CommandContext } from '@farris/devkit'
 import { DictCommandService } from '../services/dict.command.service';
+
 @Injectable()
 @NgCommandHandler({
     commandName: 'remove'
