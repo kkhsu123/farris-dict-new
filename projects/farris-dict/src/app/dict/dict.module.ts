@@ -14,6 +14,8 @@ import { CardComponent } from "./components/card/card.component";
 
 import { FARRIS_DEVKIT_APP_PROVIDERS } from "@farris/devkit";
 
+import { KendoBindingModule } from "@farris/kendo-binding";
+
 @NgModule({
   declarations: [RootComponent, ListComponent, CardComponent],
   imports: [
@@ -25,7 +27,8 @@ import { FARRIS_DEVKIT_APP_PROVIDERS } from "@farris/devkit";
     AngularDraggableModule,
     FarrisSectionModule,
     DatagridModule,
+    KendoBindingModule,
   ],
-  providers: [FARRIS_DEVKIT_APP_PROVIDERS]
+  providers: [FARRIS_DEVKIT_APP_PROVIDERS],
 })
 export class DictModule {}
