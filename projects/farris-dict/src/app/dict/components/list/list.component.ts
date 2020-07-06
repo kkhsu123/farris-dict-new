@@ -8,10 +8,12 @@ import {
   ViewModel,
   BindingData,
   UIState,
+  COMMAND_HANDLERS_TOKEN,
 } from "@farris/devkit";
 import { ListUIState } from "../../viewmodels/uistate/list.uistate";
 import { ListViewModel } from "../../viewmodels/list.viewmodel";
 import { ListBindingData } from "../../viewmodels/bindingdata/list.bindingdata";
+import { LoadHandler } from "../../viewmodels/handlers/load.handler";
 @Component({
   selector: "app-list",
   templateUrl: "./list.component.html",
@@ -22,6 +24,7 @@ import { ListBindingData } from "../../viewmodels/bindingdata/list.bindingdata";
     { provide: ViewModel, useClass: ListViewModel },
     { provide: BindingData, useClass: ListBindingData },
     { provide: UIState, useClass: ListUIState },
+    { provide: COMMAND_HANDLERS_TOKEN, useClass: LoadHandler, multi: true },
   ],
 })
 export class ListComponent extends FrameComponent implements OnInit {

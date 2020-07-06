@@ -13,6 +13,7 @@
     [fit]="true"
     [disabled]="viewModel.stateMachine['editable']"
     farris-use-binding-data
+    (pageChanged)="viewModel.load()"
   >
   </farris-datagrid>
 </farris-section>
