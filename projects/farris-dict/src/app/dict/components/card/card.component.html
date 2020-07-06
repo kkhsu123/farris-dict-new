@@ -1,3 +1,67 @@
-<p>
-  card works!
-</p>
+<farris-section
+  class="f-section-form f-section-in-main"
+  [enableAccordion]="'default'"
+  [mainTitle]="'详细信息'"
+  [enableMaximize]="true"
+>
+  <div class="f-form-layout farris-form farris-form-controls-inline">
+    <fieldset class="f-section-formgroup">
+      <div class="f-section-formgroup-inputs">
+        <div class="col-12">
+          <div class="farris-group-wrap">
+            <div class="form-group farris-form-group">
+              <label class="col-form-label">
+                <span class="farris-label-text">标识</span>
+              </label>
+              <div class="farris-input-wrap">
+                <input
+                  type="text"
+                  class="form-control"
+                  name="ID"
+                  [(ngModel)]="data.id"
+                />
+                <div class="farris-feedback valid-feedback"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-12">
+          <div class="farris-group-wrap">
+            <div class="form-group farris-form-group">
+              <label class="col-form-label">
+                <span class="farris-label-text">编号</span>
+              </label>
+              <div class="farris-input-wrap">
+                <input
+                  type="text"
+                  class="form-control"
+                  name="Code"
+                  [(ngModel)]="data.code"
+                />
+                <div class="farris-feedback valid-feedback"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-12">
+          <div class="farris-group-wrap">
+            <div class="form-group farris-form-group">
+              <label class="col-form-label">
+                <span class="farris-label-text">名称</span>
+              </label>
+              <div class="farris-input-wrap">
+                <input
+                  type="text"
+                  class="form-control"
+                  name="Name"
+                  [(ngModel)]="data.name"
+                />
+                <div class="farris-feedback valid-feedback"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </fieldset>
+  </div>
+</farris-section>

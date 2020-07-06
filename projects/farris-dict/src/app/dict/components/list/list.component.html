@@ -1,3 +1,16 @@
-<p>
-  list works!
-</p>
+<farris-section class="f-section-grid f-section-in-nav" [showHeader]="false">
+  <farris-datagrid
+    class="f-component-grid"
+    [columns]="columns"
+    [data]="data"
+    [idField]="'id'"
+    [showLineNumber]="true"
+    [fitColumns]="false"
+    [total]="total"
+    [striped]="false"
+    [showCheckbox]="false"
+    [pagination]="false"
+    [fit]="true"
+  >
+  </farris-datagrid>
+</farris-section>

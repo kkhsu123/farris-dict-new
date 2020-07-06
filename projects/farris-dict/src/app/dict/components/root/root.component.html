@@ -5,10 +5,25 @@
         <h4 class="f-title-text">Farris UI</h4>
         <h5 class="f-title-subtitle">左列右卡</h5>
       </div>
+      <f-response-toolbar
+        class="col-7 f-toolbar"
+        [datas]="toolbarData"
+        (rtClickEvent)="toolbarClickHandler($event)"
+      ></f-response-toolbar>
     </nav>
   </div>
   <section class="f-page-main">
-    <app-list></app-list>
-    <app-card></app-card>
+    <farris-splitter class="f-page-content">
+      <farris-splitter-pane
+        class="f-col-w6 f-page-content-nav"
+        [ngResizable]="true"
+        [rzHandles]="'e'"
+      >
+        <app-list></app-list>
+      </farris-splitter-pane>
+      <farris-splitter-pane class="f-page-content-main">
+        <app-card></app-card>
+      </farris-splitter-pane>
+    </farris-splitter>
   </section>
 </div>
