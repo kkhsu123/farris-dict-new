@@ -1,7 +1,7 @@
 import { Injectable } from "@angular/core";
 import { FrameContext, BindingData, Repository } from "@farris/devkit";
-import { Observable } from "rxjs";
-import { tap, map, delay } from "rxjs/operators";
+import { Observable, empty, of } from "rxjs";
+import { tap, map, delay, switchMap, catchError } from "rxjs/operators";
 import { DictEntity } from "../../models/entities/dict.entity";
 import { DictRepository } from "../../models/dict.repository";
 @Injectable()
@@ -28,19 +28,65 @@ export class DictCommandService {
     // );
   }
   add() {
-    console.log("add");
+    return this.frameContext.repository.create().pipe(
+      tap(() => {
+        var count = this.frameContext.repository.entityCollection.count();
+      })
+    );
   }
   edit() {
-    console.log("edit");
+    var currentId = this.bindingData.list.currentId;
+    if (!currentId) {
+      alert("请选择数据");
+      return empty();
+    }
   }
   save() {
-    console.log("save");
+    var currentId = this.bindingData.list.currentId;
+    if (!currentId) {
+      alert("请选择数据");
+    }
+    return this.repository.applyChangesById(currentId).pipe(
+      switchMap((result: boolean) => {
+        if (result) {
+          alert("保存成功");
+          return this.load();
+        } else {
+          alert("保存失败");
+        }
+      }),
+      catchError(() => {
+        alert("保存失败");
+        return of(false);
+      })
+    );
   }
   cancel() {
-    console.log("cancel");
+    return this.load().pipe(
+      tap(() => {
+        console.log("cancel");
+      })
+    );
   }
   remove() {
-    console.log("remove");
+    var currentId = this.bindingData.list.currentId;
+    if (!currentId) {
+      alert("请选择数据");
+      return empty();
+    }
+    return this.repository.removeById(currentId).pipe(
+      switchMap((result: boolean) => {
+        if (result) {
+          alert("删除成功");
+          return this.load();
+        } else {
+          alert("删除失败");
+        }
+      }),
+      catchError(() => {
+        return of(false);
+      })
+    );
   }
   close() {
     console.log("close");
