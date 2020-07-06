@@ -19,6 +19,7 @@
     "@angular/platform-browser": "~7.2.0",
     "@angular/platform-browser-dynamic": "~7.2.0",
     "@angular/router": "~7.2.0",
+    "@farris/devkit": "0.0.12-20200628114341-dev",
     "@farris/farris-theme-default": "0.0.40",
     "@farris/ui-common": "^0.1.17",
     "@farris/ui-datagrid": "^0.5.37",
@@ -30,11 +31,14 @@
     "@farris/ui-splitter": "0.0.2",
     "core-js": "^2.5.4",
     "date-fns": "^2.14.0",
+    "immutable": "^4.0.0-rc.12",
     "lodash-es": "^4.17.15",
     "perfect-scrollbar": "^1.5.0",
     "resize-observer-polyfill": "^1.5.1",
-    "rxjs": "~6.3.3",
+    "rxjs": "^6.3.3",
+    "rxjs-compat": "^6.6.0",
     "tslib": "^1.9.0",
+    "validator": "^13.1.1",
     "zone.js": "~0.8.26"
   },
   "devDependencies": {

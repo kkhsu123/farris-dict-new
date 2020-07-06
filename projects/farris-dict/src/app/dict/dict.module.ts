@@ -12,6 +12,8 @@ import { RootComponent } from "./components/root/root.component";
 import { ListComponent } from "./components/list/list.component";
 import { CardComponent } from "./components/card/card.component";
 
+import { FARRIS_DEVKIT_APP_PROVIDERS } from "@farris/devkit";
+
 @NgModule({
   declarations: [RootComponent, ListComponent, CardComponent],
   imports: [
@@ -24,5 +26,6 @@ import { CardComponent } from "./components/card/card.component";
     FarrisSectionModule,
     DatagridModule,
   ],
+  providers: [FARRIS_DEVKIT_APP_PROVIDERS],
 })
 export class DictModule {}
