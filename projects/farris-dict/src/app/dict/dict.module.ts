@@ -1,6 +1,6 @@
 import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
-import { FormsModule } from "@angular/forms";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { FResponseToolbarModule } from "@farris/ui-response-toolbar";
 import { SplitterModule } from "@farris/ui-splitter";
 import { AngularDraggableModule } from "@farris/ui-draggable";
@@ -28,6 +28,7 @@ import { KendoBindingModule } from "@farris/kendo-binding";
     FarrisSectionModule,
     DatagridModule,
     KendoBindingModule,
+    ReactiveFormsModule,
   ],
   providers: [FARRIS_DEVKIT_APP_PROVIDERS],
 })

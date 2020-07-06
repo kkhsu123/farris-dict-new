@@ -5,9 +5,11 @@ import {
   FRAME_ID,
   ViewModel,
   BindingData,
+  Form,
 } from "@farris/devkit";
 import { CardViewModel } from "../../viewmodels/card.viewmodel";
 import { CardBindingData } from "../../viewmodels/bindingdata/card.bindingdata";
+import { CardForm } from "../../viewmodels/form/card.form";
 @Component({
   selector: "app-card",
   templateUrl: "./card.component.html",
@@ -17,6 +19,7 @@ import { CardBindingData } from "../../viewmodels/bindingdata/card.bindingdata";
     { provide: FRAME_ID, useValue: "card" },
     { provide: ViewModel, useClass: CardViewModel },
     { provide: BindingData, useClass: CardBindingData },
+    { provide: Form, useClass: CardForm },
   ],
 })
 export class CardComponent extends FrameComponent implements OnInit {

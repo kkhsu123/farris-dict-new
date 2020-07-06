@@ -4,7 +4,10 @@
   [mainTitle]="'详细信息'"
   [enableMaximize]="true"
 >
-  <div class="f-form-layout farris-form farris-form-controls-inline">
+  <div
+    class="f-form-layout farris-form farris-form-controls-inline"
+    [formGroup]="viewModel.form"
+  >
     <fieldset class="f-section-formgroup">
       <div class="f-section-formgroup-inputs">
         <div class="col-12">
@@ -20,6 +23,7 @@
                   name="ID"
                   [(ngModel)]="data.id"
                   [readonly]="true"
+                  formControlName="id"
                 />
                 <div class="farris-feedback valid-feedback"></div>
               </div>
@@ -39,6 +43,7 @@
                   name="Code"
                   [(ngModel)]="data.code"
                   [readonly]="!viewModel.stateMachine['editable']"
+                  formControlName="code"
                 />
                 <div class="farris-feedback valid-feedback"></div>
               </div>
@@ -58,6 +63,7 @@
                   name="Name"
                   [(ngModel)]="data.name"
                   [readonly]="!viewModel.stateMachine['editable']"
+                  formControlName="name"
                 />
                 <div class="farris-feedback valid-feedback"></div>
               </div>
