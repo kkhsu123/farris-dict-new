@@ -26,7 +26,11 @@ import { CloseHandler } from "../../viewmodels/handlers/close.handler";
 import { DictCommandService } from "../../viewmodels/services/dict.command.service";
 
 import { RootStateMachine } from "../../viewmodels/statemachine/root.statemachine";
-import { StateMachineService } from "@farris/command-services";
+import {
+  StateMachineService,
+  FormLoadingService,
+  FormMessageService,
+} from "@farris/command-services";
 import { BehaviorSubject } from "rxjs";
 
 import { DictMockDataService } from "../../models/services/dict-mock.data.service";
@@ -54,6 +58,8 @@ import { DictMockDataService } from "../../models/services/dict-mock.data.servic
     { provide: StateMachine, useClass: RootStateMachine },
 
     DictMockDataService,
+    FormLoadingService,
+    FormMessageService,
   ],
 })
 export class RootComponent extends FrameComponent implements OnInit {

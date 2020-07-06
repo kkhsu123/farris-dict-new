@@ -15,6 +15,8 @@ import { CardComponent } from "./components/card/card.component";
 import { FARRIS_DEVKIT_APP_PROVIDERS } from "@farris/devkit";
 
 import { KendoBindingModule } from "@farris/kendo-binding";
+import { LoadingModule } from "@farris/ui-loading";
+import { MessagerModule } from "@farris/ui-messager";
 
 @NgModule({
   declarations: [RootComponent, ListComponent, CardComponent],
@@ -29,6 +31,8 @@ import { KendoBindingModule } from "@farris/kendo-binding";
     DatagridModule,
     KendoBindingModule,
     ReactiveFormsModule,
+    LoadingModule.forRoot(),
+    MessagerModule.forRoot(),
   ],
   providers: [FARRIS_DEVKIT_APP_PROVIDERS],
 })
