@@ -2,5 +2,135 @@
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
   "version": 1,
   "newProjectRoot": "projects",
-  "projects": {}
+  "projects": {
+    "farris-dict": {
+      "root": "projects/farris-dict/",
+      "sourceRoot": "projects/farris-dict/src",
+      "projectType": "application",
+      "prefix": "app",
+      "schematics": {},
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/farris-dict",
+            "index": "projects/farris-dict/src/index.html",
+            "main": "projects/farris-dict/src/main.ts",
+            "polyfills": "projects/farris-dict/src/polyfills.ts",
+            "tsConfig": "projects/farris-dict/tsconfig.app.json",
+            "assets": [
+              "projects/farris-dict/src/favicon.ico",
+              "projects/farris-dict/src/assets"
+            ],
+            "styles": [
+              "projects/farris-dict/src/styles.css"
+            ],
+            "scripts": [],
+            "es5BrowserSupport": true
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "projects/farris-dict/src/environments/environment.ts",
+                  "with": "projects/farris-dict/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "farris-dict:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "farris-dict:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "farris-dict:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/farris-dict/src/test.ts",
+            "polyfills": "projects/farris-dict/src/polyfills.ts",
+            "tsConfig": "projects/farris-dict/tsconfig.spec.json",
+            "karmaConfig": "projects/farris-dict/karma.conf.js",
+            "styles": [
+              "projects/farris-dict/src/styles.css"
+            ],
+            "scripts": [],
+            "assets": [
+              "projects/farris-dict/src/favicon.ico",
+              "projects/farris-dict/src/assets"
+            ]
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/farris-dict/tsconfig.app.json",
+              "projects/farris-dict/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "farris-dict-e2e": {
+      "root": "projects/farris-dict-e2e/",
+      "projectType": "application",
+      "prefix": "",
+      "architect": {
+        "e2e": {
+          "builder": "@angular-devkit/build-angular:protractor",
+          "options": {
+            "protractorConfig": "projects/farris-dict-e2e/protractor.conf.js",
+            "devServerTarget": "farris-dict:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "farris-dict:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": "projects/farris-dict-e2e/tsconfig.e2e.json",
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    }
+  },
+  "defaultProject": "farris-dict"
 }
